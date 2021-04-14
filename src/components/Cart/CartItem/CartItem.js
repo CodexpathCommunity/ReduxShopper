@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
-import { removeFromCart } from "../../../redux/shopping/shopping-actions";
+import {
+  adjuctQty,
+  removeFromCart,
+} from "../../../redux/shopping/shopping-actions";
 import styles from "./CartItem.module.css";
 
-const CartItem = ({ item, removeFromCart }) => {
+const CartItem = ({ item, removeFromCart, adjustQty }) => {
+  const [input, setInput] = useState(item.qty);
+
+  const onChangeHandler = (e) => {
+    setInput(e.target.value);
+    adjustQty(item.id, e.target.value);
+  };
+
   return (
     <div className={styles.cartItem}>
       <img
@@ -19,7 +29,14 @@ const CartItem = ({ item, removeFromCart }) => {
       <div className={styles.cartItem__actions}>
         <div className={styles.cartItem__qty}>
           <label htmlFor="qty">Qty</label>
-          <input min="1" type="number" id="qty" name="qty" value={item.qty} />
+          <input
+            min="1"
+            type="number"
+            onChange={onChangeHandler}
+            id="qty"
+            name="qty"
+            value={input}
+          />
         </div>
         <button
           onClick={() => removeFromCart(item.id)}
@@ -38,6 +55,7 @@ const CartItem = ({ item, removeFromCart }) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     removeFromCart: (id) => dispatch(removeFromCart(id)),
+    adjustQty: (id, value) => dispatch(adjuctQty(id, value)),
   };
 };
 
