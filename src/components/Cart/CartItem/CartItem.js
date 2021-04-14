@@ -6,7 +6,9 @@ const CartItem = () => {
     <div className={styles.cartItem}>
       <img
         className={styles.cartItem__image}
-        src={"item.image"}
+        src={
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-G4iFnW3QVgKU27KVfipgbG-jzE1SEnP5yg&usqp=CAU"
+        }
         alt={"item.title"}
       />
       <div className={styles.cartItem__details}>
