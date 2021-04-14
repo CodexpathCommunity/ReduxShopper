@@ -17,7 +17,7 @@ const CartItem = ({ item }) => {
       <div className={styles.cartItem__actions}>
         <div className={styles.cartItem__qty}>
           <label htmlFor="qty">Qty</label>
-          <input min="1" type="number" id="qty" name="qty" value="1" />
+          <input min="1" type="number" id="qty" name="qty" value={item.qty} />
         </div>
         <button className={styles.actions__deleteItemBtn}>
           <img
