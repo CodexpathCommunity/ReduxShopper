@@ -17,7 +17,7 @@ const Cart = ({ cart }) => {
     });
     setTotalPrice(price);
     setTotalItems(items);
-  }, [cart, totalPrice, totalItems, setTotalPrice, setTotal]);
+  }, [cart, totalPrice, totalItems, setTotalPrice, setTotalItems]);
   return (
     <div className={styles.cart}>
       <div className={styles.cart__items}>

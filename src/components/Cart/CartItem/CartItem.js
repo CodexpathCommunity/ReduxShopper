@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { removeFromCart } from "../../../redux/shopping/shopping-actions";
 import styles from "./CartItem.module.css";
 
-const CartItem = ({ item }) => {
+const CartItem = ({ item, removeFromCart }) => {
   return (
     <div className={styles.cartItem}>
       <img
@@ -21,7 +21,10 @@ const CartItem = ({ item }) => {
           <label htmlFor="qty">Qty</label>
           <input min="1" type="number" id="qty" name="qty" value={item.qty} />
         </div>
-        <button className={styles.actions__deleteItemBtn}>
+        <button
+          onClick={() => removeFromCart(item.id)}
+          className={styles.actions__deleteItemBtn}
+        >
           <img
             src="https://image.flaticon.com/icons/svg/709/709519.svg"
             alt=""
@@ -32,6 +35,10 @@ const CartItem = ({ item }) => {
   );
 };
 
-const mapDispatchToProps = (id) => dispatchEvent(removeFromCart(id));
+const mapDispatchToProps = (dispatch) => {
+  return {
+    removeFromCart: (id) => dispatch(removeFromCart(id)),
+  };
+};
 
-export default connect(mapDispatchToProps)(CartItem);
+export default connect(null, mapDispatchToProps)(CartItem);
