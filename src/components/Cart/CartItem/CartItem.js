@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+import { removeFromCart } from "../../../redux/shopping/shopping-actions";
 import styles from "./CartItem.module.css";
 
 const CartItem = ({ item }) => {
@@ -30,4 +32,6 @@ const CartItem = ({ item }) => {
   );
 };
 
-export default CartItem;
+const mapDispatchToProps = (id) => dispatchEvent(removeFromCart(id));
+
+export default connect(mapDispatchToProps)(CartItem);
