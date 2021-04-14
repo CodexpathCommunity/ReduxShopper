@@ -7,7 +7,7 @@ const Products = ({ products }) => {
   return (
     <div className={styles.products}>
       {products.map((prod) => (
-        <Product />
+        <Product key={prod.id} productData={prod} />
       ))}
     </div>
   );

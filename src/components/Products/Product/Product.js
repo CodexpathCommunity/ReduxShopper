@@ -2,22 +2,19 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./Product.module.css";
 
-const Product = () => {
+const Product = ({ productData }) => {
   return (
     <div className={styles.product}>
       <img
         className={styles.product__image}
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-G4iFnW3QVgKU27KVfipgbG-jzE1SEnP5yg&usqp=CAU"
-        alt=""
+        src={productData.image}
+        alt={productData.title}
       />
 
       <div className={styles.product__details}>
-        <p className={styles.details__title}>Title: Cross-Jibbitz </p>
-        <p className={styles.details__desc}>
-          Description: jibbitx for crocs allow you to personalize your creos
-          with style; Cross shoes sold seperately.
-        </p>
-        <p className={styles.details__price}>$ 10.00</p>
+        <p className={styles.details__title}>Title: {productData.title} </p>
+        <p className={styles.details__desc}>Description: {productData.desc}</p>
+        <p className={styles.details__price}>$ {productData.price} </p>
       </div>
 
       <div className={styles.product__buttons}>
