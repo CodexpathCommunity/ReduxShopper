@@ -1,13 +1,16 @@
 import React from "react";
+import { connect } from "react-redux";
 import styles from "./Cart.module.css";
 
 import CartItem from "./CartItem/CartItem";
 
-const Cart = () => {
+const Cart = ({ cart }) => {
   return (
     <div className={styles.cart}>
       <div className={styles.cart__items}>
-        <CartItem key={"item.id"} item={"item"} />
+        {cart.map((item) => (
+          <CartItem key={item.id} item={item} />
+        ))}
       </div>
       <div className={styles.cart__summary}>
         <h4 className={styles.summary__title}>Cart Summary</h4>
@@ -23,4 +26,10 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+const mapStateToProps = (state) => {
+  return {
+    cart: state.shop.cart,
+  };
+};
+
+export default connect(mapStateToProps)(Cart);

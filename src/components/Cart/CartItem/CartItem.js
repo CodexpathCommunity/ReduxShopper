@@ -1,20 +1,18 @@
 import React from "react";
 import styles from "./CartItem.module.css";
 
-const CartItem = () => {
+const CartItem = ({ item }) => {
   return (
     <div className={styles.cartItem}>
       <img
         className={styles.cartItem__image}
-        src={
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-G4iFnW3QVgKU27KVfipgbG-jzE1SEnP5yg&usqp=CAU"
-        }
-        alt={"item.title"}
+        src={item.image}
+        alt={item.title}
       />
       <div className={styles.cartItem__details}>
-        <p className={styles.details__title}>Title</p>
-        <p className={styles.details__desc}>Description</p>
-        <p className={styles.details__price}>$ 10.00</p>
+        <p className={styles.details__title}>Title {item.title}</p>
+        <p className={styles.details__desc}>Description {item.desc}</p>
+        <p className={styles.details__price}>{item.price}</p>
       </div>
       <div className={styles.cartItem__actions}>
         <div className={styles.cartItem__qty}>
